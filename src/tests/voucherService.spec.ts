@@ -75,7 +75,7 @@ describe("apply Voucher", () => {
         const response = await voucherService.applyVoucher(voucher.code, amount)
         expect (response.applied).toEqual(true)
         expect (response.amount).toEqual(amount)
-        expect (response.finalAmount).toEqual(amount - voucher.discount)
+        expect (response.finalAmount).toEqual(amount - (amount * (voucher.discount / 100)))
         expect (response.discount).toEqual(voucher.discount)
         expect(amount).toBeGreaterThanOrEqual(100); 
     })
